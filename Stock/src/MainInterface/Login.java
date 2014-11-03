@@ -21,7 +21,7 @@ public class Login extends JFrame{//登录窗口
 	JTextField jtfUserName = new JTextField(20);
 	JPasswordField jpfPassword = new JPasswordField(20);
 	JButton jbtLogin = new JButton("Login");
-	JLabel jlName = new JLabel("     Card ID    :");
+	JLabel jlName = new JLabel("UserName  :");
 	JLabel jlPassword = new JLabel("Password   :");
 	JLabel jlIP = new JLabel("           IP        :");
 	JTextField jtfIP = new JTextField("222.205.39.229",20);

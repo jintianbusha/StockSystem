@@ -21,9 +21,8 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 	public JPasswordField jpf1;
 	public JTextField jtfipField;
 	public String usernameString;
-	public char[] passwordString;
-	public int count = 0;
-	
+	public String passwordString;
+
 	String pw;
 	
 	public LoginListenerClass(JTextField jtf,JPasswordField jpf,JTextField jip)
@@ -65,13 +64,12 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 		
 		//从数据库中查找用户,比对密码
 		usernameString = jtf1.getText();
-		passwordString = jpf1.getPassword();
+		passwordString = jpf1.getPassword().toString();
 		sqlString = "select password from administrator where id = '"+jtf1.getText()+"'";
 		try {
 			result = statement.executeQuery(sqlString);
 			while(result.next())
 			{
-				System.out.println(usernameString+" "+passwordString);
 				pw = result.getString("password");
 				if(pw.equals(passwordString))
 				{
@@ -81,14 +79,7 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 				}
 					
 			}
-			count++;
 			JOptionPane.showMessageDialog(null, "Username or Password incorrect!", "ERROR", JOptionPane.ERROR_MESSAGE);
-			if(count==5)
-			{
-				JOptionPane.showMessageDialog(null, "Sorry, you have enter wrong cardID or password more than five times ! Your account will be frozen!", "ERROR", JOptionPane.ERROR_MESSAGE);
-				//Login.jFrame.setVisible(false);
-				System.exit(0);
-			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
