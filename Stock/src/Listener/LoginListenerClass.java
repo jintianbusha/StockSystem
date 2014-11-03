@@ -12,35 +12,39 @@ import javax.swing.JFrame;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginListenerClass implements ActionListener{
+import MainInterface.ViewSecurityAccount;
+import MainInterface.*;
+
+public class LoginListenerClass implements ActionListener{//登录监听事件
 	
 	public static Statement statement;
 	public JTextField jtf1;
 	public JPasswordField jpf1;
+	public JTextField jtfipField;
 	public String usernameString;
 	public String passwordString;
-	JFrame vFrame;
+
 	String pw;
 	
-	public LoginListenerClass(JTextField jtf,JPasswordField jpf,JFrame jFrame)
+	public LoginListenerClass(JTextField jtf,JPasswordField jpf,JTextField jip)
 	{
 		jtf1 = jtf;
 		jpf1 = jpf;
-		vFrame = jFrame;
+		jtfipField = jip;
 	}
 	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		//vFrame.setVisible(true);
-		Connection connection = null;
+
+		Connection connection;
 		
 		String sqlString;
 		String url;
 		
 		//连接数据库222.205.38.252
-		url = "jdbc:mysql://222.205.38.252:3306/test?user=root&password=root";
+		url = "jdbc:mysql://"+jtfipField.getText()+":3306/test?user=root&password=root";
 		ResultSet result;
 		int i = 0;
 		try 
@@ -57,7 +61,7 @@ public class LoginListenerClass implements ActionListener{
 		{
 			System.out.println("数据库连接错误！");
 			// TODO: handle exception
-			//System.out.print("ERROR!");
+			System.out.print("ERROR!");
 		}
 		
 		//从数据库中查找用户,比对密码
@@ -70,7 +74,12 @@ public class LoginListenerClass implements ActionListener{
 			{
 				pw = result.getString("password");
 				if(pw.equals(passwordString))
+				{
 					System.out.println("Login Success!");
+					new ViewSecurityAccount(true);
+					Login.jFrame.setVisible(false);
+				}
+					
 			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
