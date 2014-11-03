@@ -21,7 +21,7 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 	public JPasswordField jpf1;
 	public JTextField jtfipField;
 	public String usernameString;
-	public String passwordString;
+	public char[] passwordString;
 
 	String pw;
 	
@@ -64,14 +64,14 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 		
 		//从数据库中查找用户,比对密码
 		usernameString = jtf1.getText();
-		passwordString = jpf1.getPassword().toString();
+		passwordString = jpf1.getPassword();
 		sqlString = "select password from administrator where id = '"+jtf1.getText()+"'";
 		try {
 			result = statement.executeQuery(sqlString);
 			while(result.next())
 			{
 				pw = result.getString("password");
-				if(pw.equals(passwordString))
+				if(pw.equals(String.valueOf(passwordString)))
 				{
 					System.out.println("Login Success!");
 					new ViewSecurityAccount(true);
