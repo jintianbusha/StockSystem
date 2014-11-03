@@ -15,6 +15,7 @@ public class Login extends JFrame{//登录窗口
 	
 	private JFrame vFrame = new JFrame();
 	public static JFrame jFrame;
+	
 	public Login()
 	{
 	JTextField jtfUserName = new JTextField(20);

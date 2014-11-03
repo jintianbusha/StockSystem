@@ -8,11 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import MainInterface.ViewSecurityAccount;
 import MainInterface.*;
 
 public class LoginListenerClass implements ActionListener{//登录监听事件
@@ -46,7 +45,6 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 		//连接数据库222.205.38.252
 		url = "jdbc:mysql://"+jtfipField.getText()+":3306/test?user=root&password=root";
 		ResultSet result;
-		int i = 0;
 		try 
 		{
 			Class.forName("com.mysql.jdbc.Driver");               //数据库连接并创建Statement
@@ -66,7 +64,7 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 		
 		//从数据库中查找用户,比对密码
 		usernameString = jtf1.getText();
-		passwordString = jpf1.getText();
+		passwordString = jpf1.getPassword().toString();
 		sqlString = "select password from administrator where id = '"+jtf1.getText()+"'";
 		try {
 			result = statement.executeQuery(sqlString);
@@ -81,6 +79,7 @@ public class LoginListenerClass implements ActionListener{//登录监听事件
 				}
 					
 			}
+			JOptionPane.showMessageDialog(null, "Username or Password incorrect!", "ERROR", JOptionPane.ERROR_MESSAGE);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
