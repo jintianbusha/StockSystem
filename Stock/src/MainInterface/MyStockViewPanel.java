@@ -58,6 +58,7 @@ public class MyStockViewPanel extends JPanel{//登陆后的主窗口窗口控件
 	      
 	      JLabel lb1 = new JLabel("请输入股票名称：");
 	      jpother.add(lb1);
+	      int i;
 	      
 	      JTextField jtfStockName = new JTextField();
 	      jpother.add(jtfStockName);
