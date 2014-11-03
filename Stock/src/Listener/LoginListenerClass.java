@@ -39,13 +39,13 @@ public class LoginListenerClass implements ActionListener{
 		String sqlString;
 		String url;
 		
-		//连接数据库222.205.38.252
+		//杩炴帴鏁版嵁搴�22.205.38.252
 		url = "jdbc:mysql://222.205.38.252:3306/test?user=root&password=root";
 		ResultSet result;
 		int i = 0;
 		try 
 		{
-			Class.forName("com.mysql.jdbc.Driver");               //数据库连接并创建Statement
+			Class.forName("com.mysql.jdbc.Driver");               //鏁版嵁搴撹繛鎺ュ苟鍒涘缓Statement
 			System.out.println("JDBC driver starts successfully!");
 			connection = DriverManager.getConnection(url);
 			System.out.println("MySQL connects successfully!");
@@ -55,12 +55,12 @@ public class LoginListenerClass implements ActionListener{
 		} 
 		catch (Exception e1) 
 		{
-			System.out.println("数据库连接错误！");
+			System.out.println("Failed login!!");
 			// TODO: handle exception
 			//System.out.print("ERROR!");
 		}
 		
-		//从数据库中查找用户,比对密码
+		//浠庢暟鎹簱涓煡鎵剧敤鎴�姣斿瀵嗙爜
 		usernameString = jtf1.getText();
 		passwordString = jpf1.getText();
 		sqlString = "select password from administrator where id = '"+jtf1.getText()+"'";

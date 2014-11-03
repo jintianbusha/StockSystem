@@ -1,15 +1,13 @@
 package MainInterface;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
-import Listener.*;
-
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.*;
-import java.io.IOException;
-import java.util.ArrayList;
+import Listener.LoginListenerClass;
 
 public class Login extends JFrame{
 	
